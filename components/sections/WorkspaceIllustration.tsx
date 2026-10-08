@@ -2,10 +2,10 @@ export default function WorkspaceIllustration() {
   return (
     <svg viewBox="0 0 580 520" fill="none" className="portfolio-workspace" aria-hidden="true" focusable="false">
       {/* A little studio: broad shapes, hand-drawn details, and a warm desk. */}
-      <circle cx="292" cy="251" r="207" fill="var(--portfolio-surface)" />
+      <circle cx="292" cy="251" r="207" fill="var(--portfolio-art-backdrop)" />
       <path d="M80 348C40 259 92 91 240 67" stroke="var(--portfolio-art-outline)" strokeWidth="1.5" strokeDasharray="3 7" />
-      <path d="M445 98l10-18m-3 26 20-6m-35-12-3-17" stroke="var(--portfolio-accent)" strokeWidth="3" strokeLinecap="round" />
-      <path d="m95 167 9-9 9 9-9 9-9-9Zm380 142 6-6 6 6-6 6-6-6Z" fill="var(--portfolio-accent)" />
+      <path d="M445 98l10-18m-3 26 20-6m-35-12-3-17" stroke="var(--portfolio-warm-accent)" strokeWidth="3" strokeLinecap="round" />
+      <path d="m95 167 9-9 9 9-9 9-9-9Zm380 142 6-6 6 6-6 6-6-6Z" fill="var(--portfolio-warm-accent)" />
       <ellipse cx="292" cy="434" rx="222" ry="24" fill="var(--portfolio-art-shadow)" />
       {/* Desk and legs. */}
       <path d="m69 357 343-25 110 65-351 28-102-68Z" fill="var(--portfolio-art-wood)" stroke="var(--portfolio-art-outline)" strokeWidth="2" strokeLinejoin="round" />
@@ -36,7 +36,7 @@ export default function WorkspaceIllustration() {
       <path d="m98 326 48-4-7 42-29 3-12-41Z" fill="var(--portfolio-art-terracotta)" stroke="var(--portfolio-art-outline)" strokeWidth="2" strokeLinejoin="round" />
       <ellipse cx="122" cy="324" rx="24" ry="7" transform="rotate(-5 122 324)" fill="var(--portfolio-art-terracotta)" stroke="var(--portfolio-art-outline)" strokeWidth="2" />
       {/* Notebook, loose pencil, and mug. */}
-      <path d="m382 377 49-6 35 21-50 7-34-22Z" fill="var(--portfolio-art-blue)" stroke="var(--portfolio-art-outline)" strokeWidth="2" strokeLinejoin="round" />
+      <path d="m382 377 49-6 35 21-50 7-34-22Z" fill="var(--portfolio-art-terracotta)" stroke="var(--portfolio-art-outline)" strokeWidth="2" strokeLinejoin="round" />
       <path d="m389 375 42-5 27 17-42 6-27-18Z" fill="var(--portfolio-art-screen)" stroke="var(--portfolio-art-outline)" strokeWidth="1.5" />
       <path d="m400 377 23-3m-16 8 24-3m-33 1-3 6m-7-10-3 6" stroke="var(--portfolio-art-outline)" strokeWidth="1.3" strokeLinecap="round" />
       <path d="m371 410 40-4" stroke="var(--portfolio-art-terracotta)" strokeWidth="4" strokeLinecap="round" />
@@ -44,7 +44,7 @@ export default function WorkspaceIllustration() {
       <path d="m416 317 34-3-3 41c-7 10-19 11-28 2l-3-40Z" fill="var(--portfolio-art-screen)" stroke="var(--portfolio-art-outline)" strokeWidth="2" strokeLinejoin="round" />
       <ellipse cx="433" cy="316" rx="17" ry="6" transform="rotate(-5 433 316)" fill="var(--portfolio-art-wood-edge)" stroke="var(--portfolio-art-outline)" strokeWidth="2" />
       <path d="M428 299c-9-11 9-12 1-23m12 21c-8-10 8-12 0-23" stroke="var(--portfolio-art-outline)" strokeWidth="1.5" strokeLinecap="round" opacity=".55" />
-      <path d="M427 171c40 11 57 39 40 72m-3-12 3 13 11-8" stroke="var(--portfolio-accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M427 171c40 11 57 39 40 72m-3-12 3 13 11-8" stroke="var(--portfolio-warm-accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

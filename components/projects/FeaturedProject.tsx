@@ -20,7 +20,7 @@ export default function FeaturedProject({ project, index }: { project: ProjectSu
 
   return (
     <article className="portfolio-project">
-      <div className={`portfolio-project-preview portfolio-project-preview-${index % 3}`}>
+      <div className="portfolio-project-preview">
         <div className="portfolio-preview-toolbar" aria-hidden="true">
           <span className="portfolio-preview-dots"><i /><i /><i /></span>
           <span>PROJECT / {String(index + 1).padStart(2, '0')}</span>
