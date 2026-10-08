@@ -4,6 +4,7 @@ import "./globals.css";
 import ThemeInitializer from "@/components/layout/ThemeInitializer";
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { GlobalErrorBoundary } from "@/components/GlobalErrorBoundary";
+import { themeInitializationScript } from '@/lib/theme';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

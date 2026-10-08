@@ -1,67 +1,79 @@
-'use client'
-import { cn } from '@/lib/utils'
-import { useTheme, useToggleTheme } from '@/store/theme.store'
-import { GithubIcon, LinkedinIcon } from '@sanity/icons'
-import { Moon, Sun } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { motion } from 'motion/react'
+'use client';
 
+import { ArrowUpRight, Menu, Moon, Sun } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { useToggleTheme } from '@/store/theme.store';
+import {
+  Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader,
+  SheetTitle, SheetTrigger,
+} from '@/components/ui/sheet';
 
-const Navbar = () => {
-    return (
-        <div>
-            <nav className='absolute left-1/2 -translate-x-1/2 top-0 h-25 flex items-center layout-wide z-20'>
-                <div className='flex justify-between items-center w-full px-8 md:px-0'>
-                    <Link href={"/"}>
-                        <LogoImage />
+const links = [
+  { label: 'Work', href: '/#work' },
+  { label: 'About', href: '/#about' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Education', href: '/education' },
+  { label: 'Contact', href: '/#contact' },
+];
+
+export default function Navbar({ displayFontClassName }: { displayFontClassName: string }) {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const toggleTheme = useToggleTheme();
+
+  return (
+    <header className="portfolio-header">
+      <nav aria-label="Main navigation" className="portfolio-container portfolio-nav">
+        <Link href="/" className="portfolio-wordmark" aria-label="Zaiyan Umer — home">
+          Zaiyan Umer<span aria-hidden="true">.</span>
+        </Link>
+        <div className="portfolio-nav-actions">
+          <ul className="portfolio-desktop-links">
+            {links.map(({ label, href }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  className={label === 'Contact' ? 'portfolio-nav-contact' : 'portfolio-nav-link'}
+                  aria-current={href === pathname ? 'page' : undefined}
+                >
+                  {label}{label === 'Contact' ? <ArrowUpRight size={14} aria-hidden="true" /> : null}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <button type="button" onClick={toggleTheme} className="portfolio-icon-button" aria-label="Toggle color theme">
+            <Moon size={19} className="dark:hidden" aria-hidden="true" />
+            <Sun size={19} className="hidden dark:block" aria-hidden="true" />
+          </button>
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <button type="button" className="portfolio-icon-button portfolio-menu-trigger" aria-label="Open navigation menu">
+                <Menu size={23} aria-hidden="true" />
+              </button>
+            </SheetTrigger>
+            <SheetContent className={`${displayFontClassName} portfolio-mobile-panel`}>
+              <SheetHeader>
+                <SheetTitle className="portfolio-menu-title">Explore.</SheetTitle>
+                <SheetDescription>A little about me and the things I build.</SheetDescription>
+              </SheetHeader>
+              <nav aria-label="Mobile navigation" className="portfolio-mobile-links">
+                {links.map(({ label, href }, index) => (
+                  <SheetClose asChild key={label}>
+                    <Link href={href} onClick={() => setOpen(false)}>
+                      <span aria-hidden="true">0{index + 1}</span>
+                      {label}
+                      <ArrowUpRight size={20} aria-hidden="true" />
                     </Link>
-
-                    <div className="h-full flex items-center gap-2">
-                        <span className='border border-gray-400/20 p-2 rounded-xl inset-shadow-xs' >
-                            <Link href='https://github.com/zaiyan-umer' target='_blank'> <GithubIcon fontSize={24} /> </Link>
-                        </span>
-                        <span className='border border-gray-400/20 p-2 rounded-xl inset-shadow-xs' >
-                            <Link href='https://www.linkedin.com/in/zaiyan-umer-935525324/' target='_blank'> <LinkedinIcon fontSize={24} /> </Link>
-                        </span>
-
-                        <DarkMode />
-                    </div>
-                </div>
-            </nav>
+                  </SheetClose>
+                ))}
+              </nav>
+              <p className="portfolio-menu-note">Zaiyan Umer · Full-stack developer</p>
+            </SheetContent>
+          </Sheet>
         </div>
-    )
+      </nav>
+    </header>
+  );
 }
-
-const LogoImage = ({ className }: { className?: string }) => {
-    return (
-        <Image
-            src={'/avatar.webp'}
-            alt='Logo'
-            width={50}
-            height={50}
-            className={cn('rounded-md mb-1.5 cursor-pointer', className)}
-        />
-    )
-}
-
-const DarkMode = ({ className }: { className?: string }) => {
-    const theme = useTheme();
-    const toggleTheme = useToggleTheme();
-
-    const handleClick = () => {
-        toggleTheme();
-    };
-
-    return (
-        <motion.button whileTap={{ scale: 0.8, rotate: 20 }} onClick={handleClick} className={cn("cursor-pointer", className)}>
-            {theme === "light" ? (
-                <Sun />
-            ) : (
-                <Moon />
-            )}
-        </motion.button>
-    );
-};
-
-export default Navbar

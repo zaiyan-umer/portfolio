@@ -1,14 +1,15 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 
 export default function Template({ children }: { children: React.ReactNode }) {
+    const reducedMotion = useReducedMotion();
     return (
         <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+            transition={{ duration: reducedMotion ? 0 : 0.2, ease: 'easeOut' }}
+            className="portfolio-route-enter"
         >
             {children}
         </motion.div>

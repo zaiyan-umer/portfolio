@@ -14,7 +14,7 @@ export default async function ProjectsPage() {
   const projects = await client.fetch(featuredProjectsQuery)
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 dark:bg-[#0d1117] dark:text-white mt-36">
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-[#0d1117] dark:text-white mt-16">
       <div className="max-w-6xl mx-auto px-4">
         <h1 className="text-4xl font-bold mb-2">Featured Projects</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-8">

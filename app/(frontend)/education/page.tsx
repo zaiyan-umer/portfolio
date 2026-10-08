@@ -14,7 +14,7 @@ export default async function EducationPage() {
   ]);
 
   return (
-    <main className="layout-standard pt-32 pb-20">
+    <main className="layout-standard pt-16 pb-20">
       <header className="mb-10">
         <h1 className="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">
           Education & Certifications

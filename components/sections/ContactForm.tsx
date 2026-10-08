@@ -107,7 +107,7 @@ export function ContactForm({ className }: { className?: string }) {
 
     return (
         <div id="contact" className={cn('', className)}>
-            <h1 className="scroll-m-20 text-center text-4xl font-bold text-balance mb-8">Contact Me</h1>
+            <h2 className="scroll-m-20 text-center text-4xl font-bold text-balance mb-8">Contact Me</h2>
             <form onSubmit={handleSubmit}>
                 <FieldGroup>
                     <Field>
@@ -192,5 +192,4 @@ export function ContactForm({ className }: { className?: string }) {
         </div>
     )
 }
-
 

@@ -19,7 +19,7 @@ const BackButton = ({ className }: { className?: string }) => {
     }
 
     return (
-        <div className="absolute top-24 left-0 right-0 z-30 pointer-events-none flex justify-center">
+        <div className="portfolio-back-button absolute left-0 right-0 z-30 pointer-events-none flex justify-center">
             <div className="layout-standard flex justify-start">
                 <button
                     type="button"
