@@ -10,3 +10,10 @@ export interface ProjectSummary {
   liveUrl?: string | null;
   techStack?: string[] | null;
 }
+
+export interface ProjectDetail extends ProjectSummary {
+  overview?: string | null;
+  contribution?: string | null;
+  technicalNotes?: string | null;
+  publishedAt?: string | null;
+}

@@ -19,20 +19,15 @@ const BackButton = ({ className }: { className?: string }) => {
     }
 
     return (
-        <div className="portfolio-back-button absolute left-0 right-0 z-30 pointer-events-none flex justify-center">
-            <div className="layout-standard flex justify-start">
-                <button
-                    type="button"
-                    onClick={handleBack}
-                    className={cn(
-                        "pointer-events-auto inline-flex items-center gap-1.5 cursor-pointer rounded-full border border-black/10 dark:border-gray-200/20 bg-background/80 backdrop-blur-sm px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 shadow-sm transition-colors hover:text-gray-900 dark:hover:text-white",
-                        className
-                    )}
-                >
-                    <ArrowLeft size={16} />
-                    Back
-                </button>
-            </div>
+        <div className="portfolio-back-button portfolio-container">
+            <button
+                type="button"
+                onClick={handleBack}
+                className={cn("portfolio-back-control", className)}
+            >
+                <ArrowLeft size={16} aria-hidden="true" />
+                Back
+            </button>
         </div>
     )
 }

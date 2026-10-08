@@ -54,8 +54,8 @@ export default function FeaturedProject({ project, index }: { project: ProjectSu
           </ul>
         ) : null}
         {slug ? (
-          <Link href={`/projects/${encodeURIComponent(slug)}`} className="portfolio-case-study" aria-label={`View ${title} case study`}>
-            View case study <ArrowUpRight size={19} aria-hidden="true" />
+          <Link href={`/projects/${encodeURIComponent(slug)}`} className="portfolio-case-study" aria-label={`View ${title} project`}>
+            View project <ArrowUpRight size={19} aria-hidden="true" />
           </Link>
         ) : null}
         <div className="portfolio-project-external">

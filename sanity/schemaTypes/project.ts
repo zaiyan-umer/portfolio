@@ -4,6 +4,19 @@ export default defineType({
   name: 'project',
   title: 'Projects',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'story',
+      title: 'Project story',
+      description: 'Aim for 150–300 words across these optional sections. Use plain text and blank lines between paragraphs; Markdown is not rendered.',
+      options: { collapsible: true, collapsed: false },
+    },
+    {
+      name: 'legacy',
+      title: 'Legacy content',
+      options: { collapsible: true, collapsed: true },
+    },
+  ],
   fields: [
     defineField({
       name: 'title',
@@ -63,8 +76,34 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'overview',
+      title: 'Overview',
+      type: 'text',
+      rows: 4,
+      fieldset: 'story',
+      description: 'What does the project do, who is it for, and why did you build it? Go beyond the short description.',
+    }),
+    defineField({
+      name: 'contribution',
+      title: 'My contribution',
+      type: 'text',
+      rows: 4,
+      fieldset: 'story',
+      description: 'Describe what you personally built or owned. For team projects, distinguish your work from the team’s.',
+    }),
+    defineField({
+      name: 'technicalNotes',
+      title: 'Technical highlight / reflection',
+      type: 'text',
+      rows: 5,
+      fieldset: 'story',
+      description: 'Explain one meaningful decision, challenge, tradeoff, or lesson. You can also describe what works today and what you would improve.',
+    }),
+    defineField({
       name: 'content',
-      title: 'Content',
+      title: 'Legacy README content',
+      description: 'Preserved for reference and editing. This content is no longer displayed on public project pages; use the Project story fields instead.',
+      fieldset: 'legacy',
       type: 'array',
       of: [
         {
@@ -137,7 +176,7 @@ export default defineType({
       featured: 'featured',
     },
     prepare(selection) {
-      const { title, featured } = selection
+      const { featured } = selection
       return {
         ...selection,
         subtitle: featured ? '⭐ Featured' : '',

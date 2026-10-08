@@ -44,7 +44,9 @@ export const projectQuery = groq`
     githubUrl,
     liveUrl,
     techStack,
-    content,
+    overview,
+    contribution,
+    technicalNotes,
     publishedAt,
     order
   }
