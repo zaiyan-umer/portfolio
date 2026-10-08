@@ -27,18 +27,12 @@ export default async function Home() {
     <main className="content relative">
       <Hero />
       <SelectedProjects projects={projectsData as ProjectSummary[] | null} />
+      <AboutMe data={aboutMeData} />
+      <Experience data={experienceData} />
       <div className="mt-8 layout-standard">
         <Separator className='dark:bg-gray-300/20' />
 
-        <AboutMe data={aboutMeData} className='my-20' />
-
-        <Separator className='dark:bg-gray-300/20' />
-
         <TechStack data={techStackData} className='my-20' />
-
-        <Separator className='dark:bg-gray-300/20' />
-
-        <Experience data={experienceData} className='my-20' />
 
         <Separator className='dark:bg-gray-300/20' />
 

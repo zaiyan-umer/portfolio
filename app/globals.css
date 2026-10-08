@@ -263,6 +263,38 @@
 .portfolio-work-empty { padding: 32px; border: 1px dashed var(--portfolio-border); border-radius: 12px; }
 .portfolio-work-empty > p + p { margin-top: 8px; font-size: 13px; line-height: 1.7; color: var(--portfolio-muted); }
 
+.portfolio-profile-section { padding-block: 64px; border-top: 1px solid var(--portfolio-border); }
+.portfolio-about-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+.portfolio-about-biography { max-width: 42rem; }
+.portfolio-about-biography p + p { margin-top: 24px; }
+.portfolio-about-intro { font-size: 21px; font-weight: 500; line-height: 1.65; letter-spacing: -.4px; overflow-wrap: anywhere; }
+.portfolio-about-paragraph { color: var(--portfolio-muted); font-size: 16px; line-height: 1.85; overflow-wrap: anywhere; }
+.portfolio-about-facts { position: relative; padding: 32px; border: 1px solid var(--portfolio-border); border-radius: 8px; background: var(--portfolio-art-backdrop); max-width: 42rem; }
+.portfolio-about-mark { position: absolute; top: 20px; right: 24px; color: var(--portfolio-warm-accent); transform: rotate(-8deg); }
+.portfolio-about-facts h3 { padding-right: 48px; line-height: 1.6; }
+.portfolio-about-facts dl { margin-top: 24px; }
+.portfolio-about-fact + .portfolio-about-fact { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--portfolio-border); }
+.portfolio-about-fact dt { color: var(--portfolio-muted); font-size: 11px; font-weight: 550; letter-spacing: 1px; text-transform: uppercase; overflow-wrap: anywhere; }
+.portfolio-about-fact dd { margin-top: 7px; font-size: 17px; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+.portfolio-experience-list { position: relative; }
+.portfolio-experience-list::before { content: ''; position: absolute; top: 7px; bottom: 0; left: 5px; width: 1px; background: var(--portfolio-border); }
+.portfolio-experience-entry { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-left: 32px; }
+.portfolio-experience-entry + .portfolio-experience-entry { margin-top: 40px; }
+.portfolio-experience-entry::before { content: ''; position: absolute; top: 6px; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--portfolio-warm-accent); box-shadow: 0 0 0 5px var(--portfolio-background); }
+.portfolio-experience-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; min-width: 0; }
+.portfolio-experience-dates { color: var(--portfolio-muted); font-family: var(--font-geist-mono), monospace; font-size: 11px; line-height: 1.8; overflow-wrap: anywhere; }
+.portfolio-experience-current { display: inline-flex; align-items: center; padding: 3px 8px; border: 1px solid var(--portfolio-border); border-radius: 4px; background: var(--portfolio-surface); font-size: 10px; font-weight: 550; }
+.portfolio-experience-copy { min-width: 0; max-width: 42rem; }
+.portfolio-experience-copy h3 { font-family: var(--font-portfolio-display), sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 650; letter-spacing: -.04em; line-height: 1.2; overflow-wrap: anywhere; }
+.portfolio-experience-company { margin-top: 8px; font-size: 15px; font-weight: 550; line-height: 1.5; overflow-wrap: anywhere; }
+.portfolio-experience-location { margin-top: 7px; color: var(--portfolio-muted); font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.portfolio-experience-summary { margin-top: 18px; color: var(--portfolio-muted); font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.portfolio-experience-bullets { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; color: var(--portfolio-muted); font-size: 14px; line-height: 1.8; }
+.portfolio-experience-bullets li { position: relative; padding-left: 16px; overflow-wrap: anywhere; }
+.portfolio-experience-bullets li::before { content: ''; position: absolute; top: .75em; left: 0; width: 4px; height: 4px; border-radius: 50%; background: var(--portfolio-warm-accent); }
+.portfolio-experience-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 12px; color: var(--portfolio-accent); font-size: 12px; font-weight: 550; }
+.portfolio-experience-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
 @keyframes portfolio-entrance {
   from { transform: translateY(10px); }
   to { transform: translateY(0); }
@@ -294,6 +326,16 @@
   .portfolio-preview-toolbar { padding-bottom: 20px; }
 }
 @media (min-width: 1024px) {
+  .portfolio-profile-section { padding-block: 88px; }
+  .portfolio-about-grid-split { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 64px; }
+  .portfolio-about-intro { font-size: 25px; }
+  .portfolio-about-facts { padding: 36px; }
+  .portfolio-experience-list::before { left: calc(10rem + 23px); }
+  .portfolio-experience-entry { grid-template-columns: 10rem minmax(0, 1fr); gap: 48px; padding-left: 0; }
+  .portfolio-experience-entry + .portfolio-experience-entry { margin-top: 48px; }
+  .portfolio-experience-entry::before { left: calc(10rem + 18px); }
+  .portfolio-experience-copy { grid-column: 2; grid-row: 1; }
+  .portfolio-experience-meta { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 12px; }
   :root { --portfolio-header-height: 80px; }
   .portfolio-desktop-links { display: flex; }
   .portfolio-menu-trigger { display: none; }
