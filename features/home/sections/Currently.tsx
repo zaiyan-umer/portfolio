@@ -14,7 +14,14 @@ function NoteLink({ children, value }: PortableTextMarkComponentProps<CurrentlyN
   );
 }
 
-const noteComponents: PortableTextComponents = { marks: { link: NoteLink } };
+const noteComponents: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => (
+      <p><span className="portfolio-currently-highlight">{children}</span></p>
+    ),
+  },
+  marks: { link: NoteLink },
+};
 
 export function Currently({ data }: { data: CurrentlySnapshot }) {
   if (!data.entries.length) return null;

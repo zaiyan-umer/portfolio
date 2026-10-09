@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" preserveAspectRatio="none">
+  <defs>
+    <filter id="feather" x="-5%" y="-15%" width="110%" height="130%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.065 0.14" numOctaves="2" seed="13" result="grain"/>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="0.55 1.35"/>
+    </filter>
+  </defs>
+  <path fill="#EFA28E" filter="url(#feather)" d="M7 16 23 11 39 14 57 8 74 12 92 7 108 11 125 6 142 10 161 5 179 9 196 6 215 11 232 5 250 9 268 4 286 8 294 12 290 21 297 28 292 36 296 44 291 52 298 59 292 67 296 75 290 83 294 89 278 93 261 88 244 94 227 90 209 96 192 91 174 95 155 90 138 96 121 92 103 97 86 92 68 97 51 91 34 96 17 92 6 94 10 84 4 76 9 68 3 60 8 52 4 44 10 35 3 28 9 22Z"/>
+</svg>

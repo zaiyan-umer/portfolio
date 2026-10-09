@@ -28,6 +28,12 @@
   --portfolio-art-device-light: #c2b6a7;
   --portfolio-art-leaf-shade: #557a65;
   --portfolio-art-pot-shade: #8f4d37;
+  /* Pastel marker strokes keep the same dark ink in both public themes. */
+  --portfolio-currently-ink: #302a26;
+  --portfolio-currently-focus-light: #fff7e3;
+  --portfolio-currently-stroke-yellow: url("/currently/marker-yellow.svg");
+  --portfolio-currently-stroke-coral: url("/currently/marker-coral.svg");
+  --portfolio-currently-stroke-blue: url("/currently/marker-blue.svg");
   --portfolio-header-height: 72px;
 }
 
