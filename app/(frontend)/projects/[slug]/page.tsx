@@ -1,8 +1,6 @@
-import ProjectDetailView from '@/components/projects/ProjectDetailView';
-import type { ProjectDetail, ProjectSummary } from '@/lib/project.types';
-import { projectText } from '@/lib/project-story';
-import { projectQuery, projectsQuery } from '@/lib/sanity.queries';
-import { client } from '@/sanity/lib/client';
+import { getProject, getProjectsForStaticParams } from '@/features/projects/server/data';
+import ProjectDetailView from '@/features/projects/pages/ProjectDetailView';
+import { projectText } from '@/features/projects/lib/story';
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -12,7 +10,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   'use cache';
   const resolvedParams = await params;
   const slug = resolvedParams?.slug ? decodeURIComponent(resolvedParams.slug) : '';
-  const project = await client.fetch<ProjectDetail | null>(projectQuery, { slug });
+  const project = await getProject(slug);
 
   return {
     title: projectText(project?.title) || 'Project',
@@ -21,7 +19,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 }
 
 export async function generateStaticParams() {
-  const projects = await client.fetch<ProjectSummary[]>(projectsQuery);
+  const projects = await getProjectsForStaticParams();
   return Array.isArray(projects) ? projects.flatMap(project => {
     const slug = projectText(project?.slug?.current);
     return slug ? [{ slug }] : [];
@@ -32,7 +30,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   'use cache';
   const resolvedParams = await params;
   const slug = resolvedParams?.slug ? decodeURIComponent(resolvedParams.slug) : '';
-  const project = await client.fetch<ProjectDetail | null>(projectQuery, { slug });
+  const project = await getProject(slug);
 
   return <ProjectDetailView project={project} />;
 }

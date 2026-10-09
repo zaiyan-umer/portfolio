@@ -1,0 +1,371 @@
+/* Education styles. Imported globally to preserve route and portal styling. */
+
+.portfolio-education-page {
+  padding-block: 24px 64px;
+}
+
+.portfolio-education-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 48px;
+}
+
+.portfolio-education-section {
+  min-width: 0;
+  scroll-margin-top: calc(var(--portfolio-header-height) + 24px);
+}
+
+.portfolio-education-section-heading {
+  max-width: 48rem;
+  margin-bottom: 24px;
+}
+
+.portfolio-education-section-heading h2 {
+  margin-top: 12px;
+  font-family: var(--font-portfolio-display), sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-education-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+.portfolio-education-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 8px;
+  background: var(--portfolio-surface);
+}
+
+.portfolio-education-card h3 {
+  font-family: var(--font-portfolio-display), sans-serif;
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-course-card {
+  background: var(--portfolio-art-backdrop);
+}
+
+.portfolio-course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  color: var(--portfolio-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.portfolio-course-list li {
+  position: relative;
+  padding-left: 15px;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-course-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--portfolio-warm-accent);
+}
+
+.portfolio-education-muted {
+  margin-top: 14px;
+  color: var(--portfolio-muted);
+  font-size: 14px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-education-empty {
+  padding: 24px;
+  border: 1px dashed var(--portfolio-border);
+  border-radius: 8px;
+  color: var(--portfolio-muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.portfolio-certification-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-certification-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.portfolio-certification-meta > div {
+  min-width: 0;
+}
+
+.portfolio-certification-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 6px;
+  background: var(--portfolio-background);
+  color: var(--portfolio-text);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+}
+
+.portfolio-certification-logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.portfolio-certification-issuer {
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-certification-date {
+  margin-top: 4px;
+  color: var(--portfolio-muted);
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-certification-credential {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--portfolio-border);
+}
+
+.portfolio-certification-credential dt {
+  color: var(--portfolio-muted);
+  font-size: 10px;
+  font-weight: 550;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.portfolio-certification-credential dd {
+  margin-top: 6px;
+  color: var(--portfolio-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-certification-link,
+.portfolio-activity-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  color: var(--portfolio-accent);
+  font-size: 13px;
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-certification-link {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.portfolio-certification-link svg,
+.portfolio-activity-link svg {
+  flex-shrink: 0;
+}
+
+.portfolio-certification-link:hover,
+.portfolio-activity-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.portfolio-education-activity {
+  padding-top: 32px;
+  border-top: 1px solid var(--portfolio-border);
+}
+
+.portfolio-activity-panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 8px;
+}
+
+.portfolio-activity-panel h3 {
+  font-family: var(--font-portfolio-display), sans-serif;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-activity-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+.portfolio-activity-summary p {
+  color: var(--portfolio-muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.portfolio-activity-panel > .portfolio-activity-link {
+  margin-top: 12px;
+}
+
+.portfolio-calendar-scroll {
+  overflow-x: auto;
+  margin-top: 24px;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--portfolio-control-border) transparent;
+}
+
+.portfolio-calendar-scroll:focus-visible {
+  outline: 2px solid var(--portfolio-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.portfolio-calendar {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+
+.portfolio-calendar-weekdays {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 20px repeat(7, 12px);
+  gap: 4px;
+  padding-right: 4px;
+  background: var(--portfolio-background);
+  color: var(--portfolio-muted);
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.portfolio-calendar-weekdays span {
+  width: 26px;
+}
+
+.portfolio-calendar-columns {
+  display: flex;
+  gap: 4px;
+}
+
+.portfolio-calendar-week {
+  display: grid;
+  grid-template-rows: 20px repeat(7, 12px);
+  gap: 4px;
+  width: 12px;
+}
+
+.portfolio-calendar-month {
+  color: var(--portfolio-muted);
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.portfolio-calendar-cell {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.portfolio-calendar-level-0 {
+  background: var(--portfolio-surface);
+}
+
+.portfolio-calendar-level-1 {
+  background: color-mix(in srgb, var(--portfolio-accent) 25%, var(--portfolio-surface));
+}
+
+.portfolio-calendar-level-2 {
+  background: color-mix(in srgb, var(--portfolio-accent) 45%, var(--portfolio-surface));
+}
+
+.portfolio-calendar-level-3 {
+  background: color-mix(in srgb, var(--portfolio-accent) 70%, var(--portfolio-surface));
+}
+
+.portfolio-calendar-level-4 {
+  background: var(--portfolio-accent);
+}
+
+.portfolio-calendar-blank {
+  visibility: hidden;
+}
+
+.portfolio-activity-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 8px;
+}
+
+.portfolio-calendar-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--portfolio-muted);
+  font-size: 10px;
+}
+
+.portfolio-calendar-legend > span:first-child {
+  margin-right: 4px;
+}
+
+.portfolio-calendar-legend > span:last-child {
+  margin-left: 4px;
+}
+
+.portfolio-education-loading {
+  color: var(--portfolio-muted);
+  font-size: 13px;
+}
+
+.portfolio-education-loading > div {
+  height: 144px;
+  margin-top: 16px;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 8px;
+  background: var(--portfolio-surface);
+}

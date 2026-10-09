@@ -1,0 +1,61 @@
+/* Motion styles. Imported globally to preserve route and portal styling. */
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-education-loading > div {
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes portfolio-entrance {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-enter {
+    animation: portfolio-entrance 400ms ease-out both;
+  }
+  .portfolio-hero-name {
+    animation-delay: 40ms;
+  }
+  .portfolio-hero-description {
+    animation-delay: 80ms;
+  }
+  .portfolio-hero-actions {
+    animation-delay: 120ms;
+  }
+  .portfolio-hero-art {
+    animation-delay: 100ms;
+  }
+  .portfolio-route-enter {
+    animation: portfolio-entrance 200ms ease-out;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-project:hover .portfolio-preview-image {
+    transform: scale(1.025);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.scroll-smooth {
+    scroll-behavior: auto;
+  }
+  .portfolio-shell *,
+  .portfolio-mobile-panel,
+  .portfolio-mobile-panel *,
+  [data-slot='sheet-overlay'] {
+    animation: none !important;
+    transition: none !important;
+  }
+  .portfolio-button:hover,
+  .portfolio-project:hover .portfolio-preview-image,
+  .portfolio-case-study:hover > svg {
+    transform: none;
+  }
+}

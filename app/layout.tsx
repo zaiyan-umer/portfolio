@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ThemeInitializer from "@/components/layout/ThemeInitializer";
+import ThemeInitializer from "@/features/theme/components/ThemeInitializer";
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { GlobalErrorBoundary } from "@/components/GlobalErrorBoundary";
-import { themeInitializationScript } from '@/lib/theme';
+import { GlobalErrorBoundary } from "@/components/errors/GlobalErrorBoundary";
+import { themeInitializationScript } from '@/features/theme/lib/theme';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

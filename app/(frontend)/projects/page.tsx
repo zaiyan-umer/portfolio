@@ -1,10 +1,8 @@
-import ProjectListingView from '@/components/projects/ProjectListingView';
-import type { ProjectSummary } from '@/lib/project.types';
-import { featuredProjectsQuery } from '@/lib/sanity.queries';
-import { client } from '@/sanity/lib/client';
+import { getFeaturedProjects } from '@/features/projects/server/data';
+import ProjectListingView from '@/features/projects/pages/ProjectListingView';
 
 export default async function ProjectsPage() {
   'use cache';
-  const projects = await client.fetch<ProjectSummary[] | null>(featuredProjectsQuery);
+  const projects = await getFeaturedProjects();
   return <ProjectListingView projects={projects} />;
 }

@@ -1,0 +1,167 @@
+/* Shared styles. Imported globally to preserve route and portal styling. */
+
+.portfolio-eyebrow {
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--portfolio-muted);
+}
+
+.portfolio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 48px;
+  padding: 12px 19px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 550;
+  transition:
+    background 180ms,
+    border-color 180ms,
+    transform 180ms;
+}
+
+.portfolio-button-primary {
+  background: var(--portfolio-accent);
+  color: var(--portfolio-on-accent);
+}
+
+.portfolio-button-primary:hover {
+  background: color-mix(in srgb, var(--portfolio-accent) 85%, var(--portfolio-text));
+  transform: translateY(-2px);
+}
+
+.portfolio-button-secondary {
+  border-color: var(--portfolio-control-border);
+  color: var(--portfolio-text);
+}
+
+.portfolio-button-secondary:hover {
+  border-color: var(--portfolio-accent);
+  background: var(--portfolio-surface);
+  transform: translateY(-2px);
+}
+
+.portfolio-section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.portfolio-section-heading h2 {
+  margin-top: 12px;
+  font-family: var(--font-portfolio-display), sans-serif;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+.portfolio-section-heading h2 > span {
+  color: var(--portfolio-accent);
+}
+
+.portfolio-section-heading > p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--portfolio-muted);
+}
+
+.portfolio-project-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  font-size: 12px;
+  color: var(--portfolio-muted);
+}
+
+.portfolio-project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.portfolio-project-tech li {
+  padding: 5px 9px;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.portfolio-work-heading {
+  max-width: 48rem;
+}
+
+.portfolio-work-heading h1 {
+  font-family: var(--font-portfolio-display), sans-serif;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-work-heading p {
+  margin-top: 20px;
+  color: var(--portfolio-muted);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.portfolio-work-card .portfolio-project-tech li {
+  font-size: 11px;
+}
+
+.portfolio-project-detail .portfolio-project-tech {
+  margin-top: 24px;
+}
+
+.portfolio-project-detail .portfolio-project-tech li {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.portfolio-project-detail-actions .portfolio-button {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-project-missing > p:not(.portfolio-eyebrow) {
+  margin-top: 24px;
+  max-width: 42rem;
+  color: var(--portfolio-muted);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.portfolio-education-section-heading > p:last-child:not(.portfolio-eyebrow) {
+  margin-top: 16px;
+  color: var(--portfolio-muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.portfolio-certification-card .portfolio-project-tech {
+  margin-top: 18px;
+}
+
+.portfolio-profile-section {
+  padding-block: 64px;
+  border-top: 1px solid var(--portfolio-border);
+}
+
+.portfolio-contact-invitation > .portfolio-section-heading {
+  margin-bottom: 24px;
+}

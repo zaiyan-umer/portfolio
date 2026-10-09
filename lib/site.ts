@@ -11,3 +11,18 @@ export const contactLinks = [
   { label: 'GitHub', href: siteContact.github, external: true },
   { label: 'LinkedIn', href: siteContact.linkedin, external: true },
 ] as const;
+
+export const navigationLinks = [
+  { label: 'Work', href: '/#work' },
+  { label: 'About', href: '/#about' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Education', href: '/education' },
+  { label: 'Contact', href: '/#contact' },
+] as const;
+
+export const footerNavigationLinks = [
+  { label: 'Work', href: '/projects' },
+  { label: 'About', href: '/#about' },
+  { label: 'Education', href: '/education' },
+  { label: 'Contact', href: '/#contact' },
+] as const;
