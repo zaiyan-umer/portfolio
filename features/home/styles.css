@@ -102,6 +102,20 @@
   color: var(--portfolio-muted);
 }
 
+.portfolio-art-note-highlight {
+  display: inline-block;
+  padding: 0.08em 0.25em;
+  color: var(--portfolio-currently-ink);
+  background-image: var(--portfolio-currently-stroke-yellow);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.portfolio-art-note-highlight-coral {
+  background-image: var(--portfolio-currently-stroke-coral);
+}
+
 .portfolio-art-caption {
   display: block;
   text-align: center;

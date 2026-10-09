@@ -37,9 +37,9 @@ export default function Hero() {
       </div>
       <div className="portfolio-hero-art">
         <span className="portfolio-art-note" aria-hidden="true">
-          A place for ideas
+          A place for <span className="portfolio-art-note-highlight">ideas</span>
           <br />
-          to become things.
+          <span className="portfolio-art-note-highlight portfolio-art-note-highlight-coral">to become things.</span>
         </span>
         <WorkspaceHoverScene>
           <WorkspaceIllustration />
