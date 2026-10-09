@@ -1,9 +1,6 @@
-import React from 'react'
+import { redirect } from 'next/navigation';
+import { githubRepositoriesUrl } from '@/lib/site';
 
-const repositories = () => {
-  return (
-    <div>repositories</div>
-  )
+export default function RepositoriesPage() {
+  redirect(githubRepositoriesUrl);
 }
-
-export default repositories

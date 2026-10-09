@@ -1,148 +1,57 @@
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
+import { ArrowUpRight } from 'lucide-react';
+import { CertificationLogo } from '@/components/ui/CertificationLogo';
+import { educationCertifications, educationCourses, type CertificationData, type CourseCategoryData } from '@/lib/education';
+import { cn } from '@/lib/utils';
 
-import BorderCard from "../ui/BorderCard";
-import { Panel, PanelContent, PanelHeader, PanelTitle } from "../ui/panel";
+export function CourseWork({ data, className }: { data: CourseCategoryData[] | null; className?: string }) {
+  const categories = educationCourses(data);
 
-
-type CourseCategoryData = {
-    categoryKey: string;
-    title: string;
-    courses: string[];
+  return (
+    <section id="course-work" aria-labelledby="coursework-heading" className={cn('portfolio-education-section', className)}>
+      <header className="portfolio-education-section-heading">
+        <p className="portfolio-eyebrow">01 / Coursework</p>
+        <h2 id="coursework-heading">A foundation in computer science.</h2>
+        <p>BSCS - National University of Computer and Emerging Sciences (FAST)</p>
+      </header>
+      {categories.length ? <div className="portfolio-education-grid">
+        {categories.map(category => <article key={category.key} className="portfolio-education-card portfolio-course-card">
+          <h3>{category.title || 'Coursework'}</h3>
+          {category.courses.length ? <ul className="portfolio-course-list">
+            {category.courses.map((course, index) => <li key={`${course}-${index}`}>{course}</li>)}
+          </ul> : <p className="portfolio-education-muted">Course details are not available yet.</p>}
+        </article>)}
+      </div> : <p className="portfolio-education-empty">Coursework details are not available yet.</p>}
+    </section>
+  );
 }
 
-export const CourseWork = ({ data, className }: { data: CourseCategoryData[], className?: string }) => {
-    if (!data?.length) return null;
+export function Certifications({ data, className }: { data: CertificationData[] | null; className?: string }) {
+  const certifications = educationCertifications(data);
 
-    return (
-        <Panel id="course-work" className={cn(className)}>
-            <PanelHeader>
-                <PanelTitle>BSCS - National University of Computer and Emerging Sciences (FAST)</PanelTitle>
-            </PanelHeader>
-
-            <PanelContent>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 select-none mt-4 py-6">
-
-                    {data.map((field) => (
-
-                        <BorderCard key={field.categoryKey || field.title} className="p-4 rounded-md border bg-muted/30 space-y-3">
-                            <h3 className="text-center sm:text-left font-semibold text-lg mt-2">
-                                {field.title}
-                            </h3>
-
-                            <ul className="space-y-1">
-                                {field.courses.map((course, idx) => (
-                                    <li
-                                        key={idx}
-                                        className="text-sm text-muted-foreground"
-                                    >
-                                        {course}
-                                    </li>
-                                ))}
-                            </ul>
-                        </BorderCard>
-                    ))}
-                </div>
-            </PanelContent>
-        </Panel>
-    )
-}
-
-type CertificationData = {
-    title: string;
-    issuedBy: string;
-    img: string;
-    issuedAt: string;
-    credentialId?: string;
-    link?: string;
-    tags?: string[];
-}
-
-export const Certifications = ({ data, className }: { data: CertificationData[], className?: string }) => {
-    if (!data?.length) return null;
-
-    return (
-        <Panel id="certifications" className={cn(className)}>
-            <PanelHeader>
-                <PanelTitle>Certifications</PanelTitle>
-            </PanelHeader>
-
-            <PanelContent>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 select-none mt-4 py-6">
-
-                    {data.map((certification, idx) => (
-                        <BorderCard
-                            key={idx}
-                            className="flex flex-col justify-between p-4 rounded-md border bg-muted/30"
-                        >
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-3">
-                                    <Image
-                                        width={30}
-                                        height={30}
-                                        src={certification.img}
-                                        alt={`${certification.issuedBy} logo`}
-                                        className="h-10 w-10 rounded-md object-cover"
-                                    />
-                                    <div className="flex-1 min-w-0 flex items-center justify-between gap-2 text-sm text-muted-foreground">
-                                        <p className="font-medium text-muted-foreground/90 truncate">{certification.issuedBy}</p>
-                                        <p className="text-xs shrink-0">{certification.issuedAt}</p>
-                                    </div>
-                                </div>
-
-                                <h3 className="font-bold text-lg mt-2 leading-snug">{certification.title}</h3>
-
-                                {certification.credentialId ? (
-                                    <div className="flex items-center gap-2 bg-muted/40 border rounded-md px-3">
-                                        <span className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground/50 shrink-0">ID</span>
-                                        <p className="text-xs font-mono text-muted-foreground/80 truncate">{certification.credentialId}</p>
-                                    </div>
-                                ) : null}
-
-                                {certification.tags?.length ? (
-                                    <div className="flex flex-wrap gap-2 pt-1">
-                                        {certification.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="text-[11px] px-2.5 py-1 rounded-full border text-muted-foreground/80 bg-muted/20 transition-all duration-300 hover:bg-muted/50 hover:text-foreground"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                    </div>
-                                ) : null}
-                            </div>
-
-                            {/* Link stays at the bottom */}
-                            {certification.link ? (
-                                <Link
-                                    href={certification.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group inline-flex items-center gap-1 text-sm underline underline-offset-2 text-muted-foreground hover:text-foreground transition-colors mt-4"
-                                >
-                                    View Certificate
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-3 w-3 transition-transform duration-150 group-hover:translate-x-px group-hover:-translate-y-px"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        strokeWidth={2.5}
-                                    >
-                                        <line x1="7" y1="17" x2="17" y2="7" />
-                                        <polyline points="7 7 17 7 17 17" />
-                                    </svg>
-                                </Link>
-                            ) : null}
-                        </BorderCard>
-
-                    ))}
-                </div>
-            </PanelContent>
-        </Panel >
-    )
+  return (
+    <section id="certifications" aria-labelledby="certifications-heading" className={cn('portfolio-education-section', className)}>
+      <header className="portfolio-education-section-heading">
+        <p className="portfolio-eyebrow">02 / Certifications</p>
+        <h2 id="certifications-heading">Learning beyond the classroom.</h2>
+      </header>
+      {certifications.length ? <div className="portfolio-education-grid">
+        {certifications.map(certification => {
+          const title = certification.title || 'Untitled certification';
+          return <article key={certification.key} className="portfolio-education-card portfolio-certification-card">
+            <div className="portfolio-certification-meta">
+              <CertificationLogo src={certification.image} issuer={certification.issuer} />
+              <div>{certification.issuer ? <p className="portfolio-certification-issuer">{certification.issuer}</p> : null}
+                {certification.date ? <p className="portfolio-certification-date">{certification.date}</p> : null}</div>
+            </div>
+            <h3>{title}</h3>
+            {certification.credentialId ? <dl className="portfolio-certification-credential"><dt>Credential ID</dt><dd>{certification.credentialId}</dd></dl> : null}
+            {certification.tags.length ? <ul className="portfolio-project-tech" aria-label={`${title} topics`}>
+              {certification.tags.map((tag, index) => <li key={`${tag}-${index}`}>{tag}</li>)}
+            </ul> : null}
+            {certification.link ? <a href={certification.link} target="_blank" rel="noopener noreferrer" className="portfolio-certification-link" aria-label={`View ${title} certificate (opens in a new tab)`}>View certificate<ArrowUpRight size={16} aria-hidden="true" /></a> : null}
+          </article>;
+        })}
+      </div> : <p className="portfolio-education-empty">Certifications are not available yet.</p>}
+    </section>
+  );
 }

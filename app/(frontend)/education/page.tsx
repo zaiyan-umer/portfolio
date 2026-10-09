@@ -1,35 +1,40 @@
-import { Suspense } from "react";
-import ContributionCalendar from "@/components/sections/ContributionCalendar";
-import { CourseWork, Certifications } from "@/components/sections/CourseWork";
-import { sanityFetch } from "@/sanity/lib/live";
-import { getCertificationsQuery, getCoursesQuery } from "@/lib/sanity.queries";
+import { Suspense } from 'react';
+import ContributionCalendar from '@/components/sections/ContributionCalendar';
+import { CourseWork, Certifications } from '@/components/sections/CourseWork';
+import { sanityFetch } from '@/sanity/lib/live';
+import { getCertificationsQuery, getCoursesQuery } from '@/lib/sanity.queries';
 
-export default async function EducationPage() {
-  const [
-    { data: coursesData },
-    { data: certificationsData }
-  ] = await Promise.all([
-    sanityFetch({ query: getCoursesQuery }),
-    sanityFetch({ query: getCertificationsQuery })
-  ]);
+async function CourseworkContent() {
+  const { data } = await sanityFetch({ query: getCoursesQuery });
+  return <CourseWork data={data} />;
+}
 
+async function CertificationContent() {
+  const { data } = await sanityFetch({ query: getCertificationsQuery });
+  return <Certifications data={data} />;
+}
+
+function SectionLoading({ label }: { label: string }) {
+  return <div className="portfolio-education-loading" role="status"><span>Loading {label}…</span><div aria-hidden="true" /></div>;
+}
+
+export default function EducationPage() {
   return (
-    <main className="layout-standard pt-8 pb-20">
-      <header className="mb-10">
-        <h1 className="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">
-          Education & Certifications
-        </h1>
-        <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl">
-          Coursework, certifications, and ongoing activity.
-        </p>
+    <main className="portfolio-education-page portfolio-container">
+      <header className="portfolio-work-heading">
+        <h1>Education &amp; certifications</h1>
+        <p>Coursework, certifications, and ongoing activity.</p>
       </header>
-
-      <div className="space-y-12">
-        <Suspense fallback={<div className="h-36 w-full rounded-2xl border border-neutral-200 bg-neutral-100/50 animate-pulse dark:border-neutral-800 dark:bg-neutral-900/50" />}>
-          <ContributionCalendar className="mx-auto md:w-fit" />
-        </Suspense>
-        <CourseWork data={coursesData} />
-        <Certifications data={certificationsData} className="mt-8" />
+      <div className="portfolio-education-sections">
+        <Suspense fallback={<SectionLoading label="coursework" />}><CourseworkContent /></Suspense>
+        <Suspense fallback={<SectionLoading label="certifications" />}><CertificationContent /></Suspense>
+        <section aria-labelledby="activity-heading" className="portfolio-education-section portfolio-education-activity">
+          <header className="portfolio-education-section-heading">
+            <p className="portfolio-eyebrow">03 / GitHub activity</p>
+            <h2 id="activity-heading">Putting learning into practice.</h2>
+          </header>
+          <Suspense fallback={<SectionLoading label="GitHub activity" />}><ContributionCalendar /></Suspense>
+        </section>
       </div>
     </main>
   );
