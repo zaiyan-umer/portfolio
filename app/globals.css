@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -614,13 +613,6 @@ textarea.portfolio-form-control { min-height: 144px; resize: vertical; }
   --shadow-2xl: 0px 1px 2px 0px hsl(0 0% 0% / 0.45);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
-  --gh-hover: #F6F8FA;
-  --gh-green: #1F883D;
-  --gh-hover-green: #1C8139;
-  --gh-blue: #1483e3;
-  --gh-folder: #54AEFF;
-  --gh-blue-btn-hover: #1483e3;
-  --warm-white: 38 18% 88%;
 }
 
 .dark {
@@ -674,10 +666,6 @@ textarea.portfolio-form-control { min-height: 144px; resize: vertical; }
   --shadow-lg: 0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 4px 6px -1px hsl(0 0% 0% / 0.18);
   --shadow-xl: 0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 8px 10px -1px hsl(0 0% 0% / 0.18);
   --shadow-2xl: 0px 1px 2px 0px hsl(0 0% 0% / 0.45);
-  --gh-hover: #151B23;
-  --gh-folder: #9198A1;
-
-  --submit-btn: #F6F8FA;
 }
 
 @theme inline {
@@ -731,43 +719,8 @@ textarea.portfolio-form-control { min-height: 144px; resize: vertical; }
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
-  --gh-hover: var(--gh-hover);
-  --gh-green : var(--gh-green);
-  --gh-hover-green: var(--gh-hover-green);
-  --gh-blue : var(--gh-blue);
-  --gh-folder : var(--gh-folder);
-  --gh-blue-btn-hover: var(--gh-blue-btn-hover);
-  --submit-btn: var(--submit-btn);
-  --warm-white: var(--warm-white);
-  
 }
 
-@utility layout-standard {
-  width: 100%;
-  max-width: 90vw;
-  margin-inline: auto;
-  @variant md {
-    max-width: 65vw;
-  }
-}
-
-@utility layout-narrow {
-  width: 100%;
-  max-width: 65vw;
-  margin-inline: auto;
-  @variant md {
-    max-width: 45vw;
-  }
-}
-
-@utility layout-wide {
-  width: 100%;
-  max-width: 85vw;
-  margin-inline: auto;
-  @variant md {
-    max-width: 65vw;
-  }
-}
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -775,9 +728,4 @@ textarea.portfolio-form-control { min-height: 144px; resize: vertical; }
   body {
     @apply bg-background text-foreground;
   }
-}
-
-.prose :where(img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
 }
