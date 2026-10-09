@@ -1,6 +1,13 @@
 import BackButton from "@/components/layout/BackButton";
 import Navbar from "@/components/layout/Navbar";
 import { Bricolage_Grotesque } from 'next/font/google';
+import type { Metadata } from 'next';
+import { homepageDescription, homepageTitle } from '@/lib/metadata';
+
+export const metadata: Metadata = {
+  title: { default: homepageTitle, template: '%s | Zaiyan Umer' },
+  description: homepageDescription,
+};
 
 const displayFont = Bricolage_Grotesque({
   variable: '--font-portfolio-display',

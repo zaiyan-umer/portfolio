@@ -11,6 +11,14 @@ export function educationUrl(value: unknown): string | null {
   }
 }
 
+export function educationImageUrl(value: unknown): string | null {
+  const href = educationText(value);
+  if (href.startsWith('/') && !href.startsWith('//') && !/[\\\u0000-\u001f\u007f]/.test(href)) {
+    return href;
+  }
+  return educationUrl(href);
+}
+
 function records(value: unknown): Record<string, unknown>[] {
   return Array.isArray(value)
     ? value.filter(
@@ -39,7 +47,7 @@ export function educationCertifications(value: unknown) {
       key: educationText(record._id) || `certification-${index}`,
       title: educationText(record.title),
       issuer: educationText(record.issuedBy),
-      image: educationUrl(record.img),
+      image: educationImageUrl(record.img),
       date: educationText(record.issuedAt),
       credentialId: educationText(record.credentialId),
       link: educationUrl(record.link),

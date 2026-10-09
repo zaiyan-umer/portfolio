@@ -4,7 +4,9 @@ import FeaturedProject from '@/features/projects/components/FeaturedProject';
 import type { ProjectSummary } from '@/features/projects/types';
 
 export default function SelectedProjects({ projects }: { projects: ProjectSummary[] | null }) {
-  const selected = (projects ?? []).slice(0, 3);
+  const selected = Array.isArray(projects)
+    ? projects.filter((project) => project && typeof project === 'object' && !Array.isArray(project)).slice(0, 3)
+    : [];
 
   return (
     <section id="work" aria-labelledby="work-heading" className="portfolio-work portfolio-container">

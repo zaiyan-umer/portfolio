@@ -1,3 +1,5 @@
+export const siteOrigin = 'https://zaiyan.me';
+
 export const siteContact = {
   email: 'zaiyanumer.cs@gmail.com',
   github: 'https://github.com/zaiyan-umer',

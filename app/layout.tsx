@@ -5,6 +5,7 @@ import ThemeInitializer from "@/features/theme/components/ThemeInitializer";
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { GlobalErrorBoundary } from "@/components/errors/GlobalErrorBoundary";
 import { themeInitializationScript } from '@/features/theme/lib/theme';
+import { siteOrigin } from '@/lib/site';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,28 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Zaiyan Umer | Portfolio",
-    template: "%s · Zaiyan Umer",
-  },
-  description:
-    "Full-stack developer building modern web experiences. Projects, case studies, and contact.",
-  metadataBase: new URL("https://zaiyan-umer.vercel.app"),
-  openGraph: {
-    title: "Zaiyan Umer | Portfolio",
-    description:
-      "Full-stack developer building modern web experiences. Projects, case studies, and contact.",
-    url: "https://zaiyan-umer.vercel.app",
-    siteName: "Zaiyan Umer",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Zaiyan Umer | Portfolio",
-    description:
-      "Full-stack developer building modern web experiences. Projects, case studies, and contact.",
-  },
+  metadataBase: new URL(siteOrigin),
 };
 
 export default function RootLayout({

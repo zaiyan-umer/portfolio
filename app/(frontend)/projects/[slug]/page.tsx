@@ -1,6 +1,7 @@
 import { getProject, getProjectsForStaticParams } from '@/features/projects/server/data';
 import ProjectDetailView from '@/features/projects/pages/ProjectDetailView';
 import { projectText } from '@/features/projects/lib/story';
+import { createPageMetadata } from '@/lib/metadata';
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -12,10 +13,20 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   const slug = resolvedParams?.slug ? decodeURIComponent(resolvedParams.slug) : '';
   const project = await getProject(slug);
 
-  return {
-    title: projectText(project?.title) || 'Project',
-    description: projectText(project?.description) || undefined,
-  };
+  if (!project) {
+    return createPageMetadata({
+      title: 'Project Not Found | Zaiyan Umer',
+      description: 'This project could not be found. Explore Zaiyan Umer’s featured projects.',
+      noIndex: true,
+    });
+  }
+
+  const title = projectText(project.title) || 'Project';
+  return createPageMetadata({
+    title: `${title} | Zaiyan Umer`,
+    description: projectText(project.description) || `Explore ${title}, a project by full-stack developer Zaiyan Umer.`,
+    path: `/projects/${encodeURIComponent(slug)}`,
+  });
 }
 
 export async function generateStaticParams() {

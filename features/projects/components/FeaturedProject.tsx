@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { ProjectSummary } from '@/features/projects/types';
 import { urlFor } from '@/sanity/lib/imgUrl';
+import { projectLink, projectText } from '@/features/projects/lib/story';
 
 function thumbnailUrl(thumbnail: ProjectSummary['thumbnail']) {
   if (!thumbnail) return null;
@@ -14,8 +15,12 @@ function thumbnailUrl(thumbnail: ProjectSummary['thumbnail']) {
 }
 
 export default function FeaturedProject({ project, index }: { project: ProjectSummary; index: number }) {
-  const title = project.title?.trim() || 'Untitled project';
-  const slug = project.slug?.current?.trim();
+  const title = projectText(project.title) || 'Untitled project';
+  const slug = projectText(project.slug?.current);
+  const description = projectText(project.description);
+  const technologies = Array.isArray(project.techStack) ? project.techStack.map(projectText).filter(Boolean) : [];
+  const liveUrl = projectLink(project.liveUrl);
+  const githubUrl = projectLink(project.githubUrl);
   const preview = thumbnailUrl(project.thumbnail);
 
   return (
@@ -53,10 +58,10 @@ export default function FeaturedProject({ project, index }: { project: ProjectSu
           /{String(index + 1).padStart(2, '0')}
         </span>
         <h3>{title}</h3>
-        {project.description ? <p className="portfolio-project-description">{project.description}</p> : null}
-        {project.techStack?.length ? (
+        {description ? <p className="portfolio-project-description">{description}</p> : null}
+        {technologies.length ? (
           <ul className="portfolio-project-tech" aria-label={`${title} technologies`}>
-            {project.techStack.map((tech, techIndex) => (
+            {technologies.map((tech, techIndex) => (
               <li key={`${tech}-${techIndex}`}>{tech}</li>
             ))}
           </ul>
@@ -71,9 +76,9 @@ export default function FeaturedProject({ project, index }: { project: ProjectSu
           </Link>
         ) : null}
         <div className="portfolio-project-external">
-          {project.liveUrl ? (
+          {liveUrl ? (
             <a
-              href={project.liveUrl}
+              href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${title} live demo (opens in a new tab)`}
@@ -81,9 +86,9 @@ export default function FeaturedProject({ project, index }: { project: ProjectSu
               <ExternalLink size={14} aria-hidden="true" /> Live demo
             </a>
           ) : null}
-          {project.githubUrl ? (
+          {githubUrl ? (
             <a
-              href={project.githubUrl}
+              href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${title} source code (opens in a new tab)`}
