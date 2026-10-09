@@ -37,17 +37,18 @@
 }
 
 .portfolio-hero-statement {
+  max-width: 30ch;
   margin-top: 9px;
   color: var(--portfolio-muted);
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.45;
 }
 
 .portfolio-hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .portfolio-pronunciation {
@@ -116,16 +117,9 @@
   background-image: var(--portfolio-currently-stroke-coral);
 }
 
-.portfolio-art-caption {
-  display: block;
-  text-align: center;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 9px;
-  letter-spacing: 0.5px;
-  color: var(--portfolio-muted);
-}
-
 .portfolio-hero-bottom {
+  grid-column: 1 / -1;
+  justify-self: stretch;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

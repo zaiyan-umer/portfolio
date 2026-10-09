@@ -127,13 +127,13 @@
     padding-inline: 23px;
     font-size: 14px;
   }
-  .portfolio-hero-bottom {
-    font-size: 11px;
-  }
   .portfolio-section-heading {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+  }
+  .portfolio-hero-bottom {
+    font-size: 11px;
   }
   .portfolio-work {
     padding-top: 80px;
@@ -232,11 +232,7 @@
     right: 24px;
     font-size: 16px;
   }
-  .portfolio-art-caption {
-    font-size: 10px;
-  }
   .portfolio-hero-bottom {
-    grid-column: 1 / -1;
     margin-top: 48px;
   }
   .portfolio-work {

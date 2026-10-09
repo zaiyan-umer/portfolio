@@ -21,8 +21,7 @@ export default function Hero() {
         <div className="portfolio-hero-description portfolio-enter">
           <p className="portfolio-hero-role">Full-stack developer</p>
           <p className="portfolio-hero-statement">
-            I build web applications
-            <br className="hidden sm:block" /> from interface to backend.
+            I build web apps, AI workflows, and backend tools.
           </p>
         </div>
         <div className="portfolio-hero-actions portfolio-enter">
@@ -44,9 +43,6 @@ export default function Hero() {
         <WorkspaceHoverScene>
           <WorkspaceIllustration />
         </WorkspaceHoverScene>
-        <span className="portfolio-art-caption" aria-hidden="true">
-          a little corner of the internet
-        </span>
       </div>
       <div className="portfolio-hero-bottom">
         <span>Thoughtfully built. Always learning.</span>
