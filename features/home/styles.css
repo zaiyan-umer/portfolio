@@ -444,3 +444,89 @@ a.portfolio-tech-item:hover {
   font-family: var(--font-geist-mono), monospace;
   font-size: 10px;
 }
+
+.portfolio-currently-section {
+  padding-block: 48px;
+}
+
+.portfolio-currently-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  max-width: 42rem;
+  font-family: var(--font-portfolio-display), sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.portfolio-currently-heading > span {
+  flex-shrink: 0;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.portfolio-currently-notes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+  max-width: 42rem;
+  margin-top: 28px;
+}
+
+.portfolio-currently-entry {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-currently-note {
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.portfolio-currently-description {
+  margin-top: 6px;
+  color: var(--portfolio-muted);
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.portfolio-currently-link {
+  color: var(--portfolio-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 180ms;
+}
+
+.portfolio-currently-link:hover {
+  color: var(--portfolio-text);
+}
+
+.portfolio-currently-updated {
+  max-width: 42rem;
+  margin-top: 24px;
+  color: var(--portfolio-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.portfolio-currently-link:focus-visible {
+  outline: 2px solid var(--portfolio-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* The hit frame stays still; local motion never changes the scene bounds. */
+.portfolio-workspace-frame,
+.portfolio-workspace-entrance {
+  width: 100%;
+}
+
+.portfolio-workspace-glow-surface {
+  opacity: 0.16;
+}
+.dark .portfolio-workspace-glow-surface {
+  opacity: 0.24;
+}

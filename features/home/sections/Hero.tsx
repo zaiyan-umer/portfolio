@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import NamePronunciation from '@/features/home/components/NamePronunciation';
+import WorkspaceHoverScene from '@/features/home/components/WorkspaceHoverScene';
 import WorkspaceIllustration from '@/features/home/components/WorkspaceIllustration';
 
 export default function Hero() {
@@ -34,13 +35,15 @@ export default function Hero() {
         </div>
         <NamePronunciation />
       </div>
-      <div className="portfolio-hero-art portfolio-enter">
+      <div className="portfolio-hero-art">
         <span className="portfolio-art-note" aria-hidden="true">
           A place for ideas
           <br />
           to become things.
         </span>
-        <WorkspaceIllustration />
+        <WorkspaceHoverScene>
+          <WorkspaceIllustration />
+        </WorkspaceHoverScene>
         <span className="portfolio-art-caption" aria-hidden="true">
           a little corner of the internet
         </span>

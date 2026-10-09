@@ -1,188 +1,305 @@
+import { useId } from 'react';
+import {
+  WorkspaceFoliage,
+  WorkspaceGlow,
+  WorkspaceRestingSteam,
+  WorkspaceSteam,
+} from '@/features/home/components/WorkspaceHoverScene';
+
+/** Server-rendered drawing; small client groups provide coordinated hover atmosphere. */
 export default function WorkspaceIllustration() {
+  const prefix = `workspace-${useId().replace(/:/g, '')}`;
+  const paint = (name: string) => `url(#${prefix}-${name})`;
+
   return (
     <svg viewBox="0 0 580 520" fill="none" className="portfolio-workspace" aria-hidden="true" focusable="false">
-      {/* A little studio: broad shapes, hand-drawn details, and a warm desk. */}
-      <circle cx="292" cy="251" r="207" fill="var(--portfolio-art-backdrop)" />
-      <path
-        d="M80 348C40 259 92 91 240 67"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="1.5"
-        strokeDasharray="3 7"
-      />
-      <path
-        d="M445 98l10-18m-3 26 20-6m-35-12-3-17"
-        stroke="var(--portfolio-warm-accent)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path d="m95 167 9-9 9 9-9 9-9-9Zm380 142 6-6 6 6-6 6-6-6Z" fill="var(--portfolio-warm-accent)" />
-      <ellipse cx="292" cy="434" rx="222" ry="24" fill="var(--portfolio-art-shadow)" />
-      {/* Desk and legs. */}
-      <path
-        d="m69 357 343-25 110 65-351 28-102-68Z"
-        fill="var(--portfolio-art-wood)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
+      <defs>
+        <linearGradient id={`${prefix}-backdrop`} x1="120" y1="80" x2="430" y2="425" gradientUnits="userSpaceOnUse">
+          <stop stopColor="var(--portfolio-art-backdrop)" />
+          <stop offset="1" stopColor="var(--portfolio-background)" />
+        </linearGradient>
+        <linearGradient id={`${prefix}-wood`} x1="235" y1="330" x2="290" y2="425" gradientUnits="userSpaceOnUse">
+          <stop stopColor="var(--portfolio-art-wood)" />
+          <stop offset="1" stopColor="var(--portfolio-art-wood-edge)" />
+        </linearGradient>
+        <linearGradient id={`${prefix}-device`} x1="20" y1="0" x2="215" y2="185" gradientUnits="userSpaceOnUse">
+          <stop stopColor="var(--portfolio-art-device-light)" />
+          <stop offset="1" stopColor="var(--portfolio-art-device)" />
+        </linearGradient>
+        <linearGradient id={`${prefix}-ceramic`} x1="411" y1="316" x2="452" y2="357" gradientUnits="userSpaceOnUse">
+          <stop stopColor="var(--portfolio-art-highlight)" />
+          <stop offset=".38" stopColor="var(--portfolio-art-screen)" />
+          <stop offset="1" stopColor="var(--portfolio-art-device-light)" />
+        </linearGradient>
+        <linearGradient id={`${prefix}-leaf`} x1="100" y1="230" x2="156" y2="285" gradientUnits="userSpaceOnUse">
+          <stop stopColor="var(--portfolio-art-green)" />
+          <stop offset="1" stopColor="var(--portfolio-art-leaf-shade)" />
+        </linearGradient>
+        <linearGradient id={`${prefix}-pot`} x1="99" y1="320" x2="145" y2="368" gradientUnits="userSpaceOnUse">
+          <stop stopColor="var(--portfolio-art-terracotta)" />
+          <stop offset="1" stopColor="var(--portfolio-art-pot-shade)" />
+        </linearGradient>
+        <radialGradient id={`${prefix}-glow`}>
+          <stop stopColor="var(--portfolio-art-blue)" />
+          <stop offset="1" stopColor="var(--portfolio-art-blue)" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <g className="portfolio-workspace-backdrop">
+        <circle cx="292" cy="251" r="207" fill={paint('backdrop')} />
+        <ellipse cx="296" cy="449" rx="218" ry="24" fill="var(--portfolio-art-shadow)" opacity=".65" />
+        <ellipse cx="299" cy="447" rx="160" ry="13" fill="var(--portfolio-art-contact-shadow)" opacity=".08" />
+      </g>
+      <g className="portfolio-workspace-desk" stroke="var(--portfolio-art-line)" strokeLinejoin="round">
+        {/* Legs meet the underside of the same desktop plane. */}
+        <path
+          d="M105 381v68m77-20v49m292-71v59"
+          stroke="var(--portfolio-art-wood-edge)"
+          strokeWidth="11"
+          strokeLinecap="round"
+        />
+        <path
+          d="M103 386v61m77-12v40m292-62v50"
+          stroke="var(--portfolio-art-line)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          opacity=".5"
+        />
+        <path d="m74 352 338-27 107 67-339 30-106-70Z" fill={paint('wood')} strokeWidth="1.5" />
+        <path d="m74 352 106 70v11L74 363v-11Z" fill="var(--portfolio-art-wood-edge)" strokeWidth="1.5" />
+        <path d="m180 422 339-30v11l-339 30v-11Z" fill="var(--portfolio-art-wood-edge)" strokeWidth="1.5" />
+        <path
+          d="m84 352 326-26 99 62m-324 32 327-29"
+          stroke="var(--portfolio-art-highlight)"
+          strokeWidth="1.5"
+          opacity=".5"
+        />
+        <path d="m189 409 158-14m-220-36 54-4" stroke="var(--portfolio-art-line)" strokeWidth="1" opacity=".12" />
+      </g>
+      <g className="portfolio-workspace-contact-shadows" fill="var(--portfolio-art-contact-shadow)">
+        <ellipse cx="289" cy="374" rx="56" ry="9" transform="rotate(-5 289 374)" opacity=".18" />
+        <ellipse cx="125" cy="365" rx="28" ry="7" transform="rotate(-5 125 365)" opacity=".18" />
+        <ellipse cx="436" cy="358" rx="27" ry="7" transform="rotate(-5 436 358)" opacity=".18" />
+        <path d="m219 380 111-9 40 26-112 10-39-27Zm164 2 55-5 28 19-55 5-28-19Z" opacity=".15" />
+      </g>
+      <g className="portfolio-workspace-monitor" stroke="var(--portfolio-art-line)" strokeLinejoin="round">
+        <path d="m270 301 29-2 7 60-29 3-7-61Z" fill="var(--portfolio-art-device)" strokeWidth="1.5" />
+        <path d="m245 368 58-5 33 15-59 6-32-16Z" fill="var(--portfolio-art-device-light)" strokeWidth="1.5" />
+        <path d="m245 368 32 16 59-6v4l-59 6-32-16v-4Z" fill="var(--portfolio-art-device)" strokeWidth="1" />
+        <path d="m277 320 4 35" stroke="var(--portfolio-art-highlight)" strokeWidth="2" opacity=".3" />
+        <g transform="matrix(1 -.08 0 1 166 149)">
+          {/* A narrow rear edge gives the frame thickness without a heavy outline. */}
+          <rect x="6" y="4" width="245" height="181" rx="11" fill="var(--portfolio-art-device)" strokeWidth="1.5" />
+          <rect width="245" height="181" rx="11" fill={paint('device')} strokeWidth="1.5" />
+          <rect x="9" y="10" width="227" height="151" rx="5" fill="var(--portfolio-art-screen)" strokeWidth="1" />
+          <WorkspaceGlow>
+            <rect
+              className="portfolio-workspace-glow-surface"
+              x="9"
+              y="10"
+              width="227"
+              height="151"
+              rx="5"
+              fill={paint('glow')}
+              stroke="none"
+            />
+          </WorkspaceGlow>
+          <path
+            d="M12 4h220"
+            stroke="var(--portfolio-art-highlight)"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            opacity=".55"
+          />
+          <path d="M10 29h225" strokeWidth=".8" opacity=".35" />
+          <g stroke="none">
+            <circle cx="20" cy="20" r="2.3" fill="var(--portfolio-art-terracotta)" />
+            <circle cx="28" cy="20" r="2.3" fill="var(--portfolio-art-wood-edge)" />
+            <circle cx="36" cy="20" r="2.3" fill="var(--portfolio-art-green)" />
+            <circle cx="123" cy="172" r="2" fill="var(--portfolio-art-line)" opacity=".6" />
+          </g>
+          <g className="portfolio-workspace-code" strokeLinecap="round">
+            <rect
+              x="17"
+              y="38"
+              width="101"
+              height="114"
+              rx="4"
+              fill="var(--portfolio-art-line)"
+              fillOpacity=".055"
+              stroke="none"
+            />
+            <path
+              d="M26 50h26m-26 12h40m-31 12h47m-47 12h28m-37 12h21m-12 12h41"
+              stroke="var(--portfolio-art-blue)"
+              strokeWidth="3"
+            />
+            <path d="M58 50h24m-9 12h28m-33 24h28m-43 12h38" stroke="var(--portfolio-art-terracotta)" strokeWidth="3" />
+            <path d="M27 132l4 3-4 3m12-1h14" stroke="var(--portfolio-art-green)" strokeWidth="2" />
+          </g>
+          <g className="portfolio-workspace-app">
+            <rect
+              x="127"
+              y="38"
+              width="101"
+              height="114"
+              rx="4"
+              fill="var(--portfolio-art-blue)"
+              fillOpacity=".06"
+              stroke="none"
+            />
+            <path d="M137 51h33m-33 8h66" strokeWidth="2" strokeLinecap="round" opacity=".45" />
+            <rect x="137" y="71" width="81" height="35" rx="4" fill="var(--portfolio-art-blue)" stroke="none" />
+            <path
+              d="M146 82h33m-33 10h54"
+              stroke="var(--portfolio-art-screen)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              opacity=".85"
+            />
+            <rect
+              x="137"
+              y="115"
+              width="36"
+              height="26"
+              rx="4"
+              fill="var(--portfolio-art-terracotta)"
+              fillOpacity=".8"
+              stroke="none"
+            />
+            <rect x="181" y="115" width="37" height="26" rx="4" fill="var(--portfolio-art-green)" stroke="none" />
+          </g>
+          <path
+            d="M20 11h74l-24 18H12v-10a8 8 0 0 1 8-8Z"
+            fill="var(--portfolio-art-highlight)"
+            opacity=".08"
+            stroke="none"
+          />
+        </g>
+      </g>
+      <g
+        className="portfolio-workspace-keyboard"
+        transform="matrix(1 -.08 .85 .55 217 374)"
+        stroke="var(--portfolio-art-line)"
         strokeLinejoin="round"
-      />
-      <path
-        d="m69 357 102 68v13L69 370v-13Zm102 68 351-28v13l-351 28v-13Z"
-        fill="var(--portfolio-art-wood-edge)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M105 395v58m74-17v44m298-66v54"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="9"
-        strokeLinecap="round"
-      />
-      {/* Monitor stand. */}
-      <path
-        d="m274 300 37-3 4 62-37 3-4-62Z"
-        fill="var(--portfolio-art-device)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-      />
-      <path
-        d="m244 365 71-7 34 15-75 8-30-16Z"
-        fill="var(--portfolio-art-device)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      {/* Monitor with a tiny imagined interface. */}
-      <path
-        d="M166 161a12 12 0 0 1 11-13l219-18a12 12 0 0 1 13 11l11 155a12 12 0 0 1-11 13l-220 18a12 12 0 0 1-13-11l-10-155Z"
-        fill="var(--portfolio-art-device)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2.5"
-      />
-      <path
-        d="m179 162 216-18 10 145-216 18-10-145Z"
-        fill="var(--portfolio-art-screen)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="1.5"
-      />
-      <path d="m180 181 216-18" stroke="var(--portfolio-art-outline)" strokeWidth="1.5" />
-      <circle cx="190" cy="171" r="2.5" fill="var(--portfolio-art-terracotta)" />
-      <circle cx="199" cy="170" r="2.5" fill="var(--portfolio-art-wood)" />
-      <circle cx="208" cy="169" r="2.5" fill="var(--portfolio-art-green)" />
-      <path
-        d="m205 203 64-5m-63 17 99-8m-98 20 42-3"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path d="m207 245 62-5 3 39-62 5-3-39Z" fill="var(--portfolio-art-blue)" />
-      <path d="m278 239 47-4 3 39-47 4-3-39Z" fill="var(--portfolio-art-terracotta)" />
-      <path d="m334 235 47-4 3 39-47 4-3-39Z" fill="var(--portfolio-art-green)" />
-      <path
-        d="m346 195-9 10 10 8m25-20 9 8-8 10m-15-21-5 23"
-        stroke="var(--portfolio-art-blue)"
-        strokeWidth="2.5"
+      >
+        <path d="M0 4h110v43H0Z" fill="var(--portfolio-art-device-light)" strokeWidth="1" />
+        <rect width="110" height="42" rx="3" fill="var(--portfolio-art-screen)" strokeWidth="1.2" />
+        <g fill="var(--portfolio-art-line)" opacity=".22" stroke="none">
+          {[5, 15, 25].map((y) => (
+            <g key={y}>
+              {Array.from({ length: 11 }, (_, index) => (
+                <rect key={index} x={5 + index * 9} y={y} width="6" height="6" rx="1" />
+              ))}
+            </g>
+          ))}
+          <rect x="29" y="34" width="51" height="4" rx="1" />
+        </g>
+      </g>
+      <g
+        className="portfolio-workspace-plant"
+        stroke="var(--portfolio-art-line)"
         strokeLinecap="round"
         strokeLinejoin="round"
-      />
-      <circle cx="298" cy="312" r="3" fill="var(--portfolio-art-outline)" />
-      {/* Keyboard. */}
-      <path
-        d="m215 378 107-10 45 27-108 11-44-28Z"
-        fill="var(--portfolio-art-screen)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
+      >
+        <WorkspaceFoliage>
+          <path
+            d="M122 324c-1-28 4-57 10-80m-8 43-22-21m24 7 23-29"
+            stroke="var(--portfolio-art-leaf-shade)"
+            strokeWidth="3"
+          />
+          <path
+            d="M132 264c-17-12-21-31-7-49 17 11 23 32 7 49Zm-12 23c-21 1-38-10-38-30 24-2 40 10 38 30Zm15-16c-2-25 12-42 36-39 0 24-14 39-36 39Z"
+            fill={paint('leaf')}
+            strokeWidth="1"
+          />
+          <path
+            d="m127 227 5 32m-39 7 20 14m47-39-19 23"
+            stroke="var(--portfolio-art-highlight)"
+            strokeWidth="1"
+            opacity=".35"
+          />
+        </WorkspaceFoliage>
+        <path d="m99 325 47-3-7 38c-3 9-23 11-30 4l-10-39Z" fill={paint('pot')} strokeWidth="1.2" />
+        <ellipse
+          cx="122"
+          cy="323"
+          rx="24"
+          ry="7"
+          transform="rotate(-4 122 323)"
+          fill="var(--portfolio-art-terracotta)"
+          strokeWidth="1.2"
+        />
+        <ellipse
+          cx="122"
+          cy="323"
+          rx="19"
+          ry="4"
+          transform="rotate(-4 122 323)"
+          fill="var(--portfolio-art-pot-shade)"
+          stroke="none"
+        />
+        <path d="M107 334l5 22" stroke="var(--portfolio-art-highlight)" strokeWidth="2" opacity=".3" />
+      </g>
+      <g
+        className="portfolio-workspace-notebook"
+        transform="matrix(1 -.08 .85 .55 381 373)"
+        stroke="var(--portfolio-art-line)"
         strokeLinejoin="round"
-      />
-      <path
-        d="m228 381 90-9m-80 16 92-9m-74 23 42-4m-60-17 17 11m3-13 17 11m4-13 17 11m4-13 17 11"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
-      {/* Plant: uneven stems keep the drawing organic. */}
-      <path
-        d="M121 334c-1-26-3-55 7-88m-5 46c-16-7-23-21-24-39m26 21c19-10 29-25 32-43"
-        stroke="var(--portfolio-art-green)"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M129 260c-14-18-16-31-1-45 10 18 12 31 1 45ZM113 282c-24-1-34-14-31-32 20 3 30 13 31 32Zm24-22c0-22 13-34 33-30-4 20-14 31-33 30Z"
-        fill="var(--portfolio-art-green)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="1.5"
-      />
-      <path
-        d="m98 326 48-4-7 42-29 3-12-41Z"
-        fill="var(--portfolio-art-terracotta)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <ellipse
-        cx="122"
-        cy="324"
-        rx="24"
-        ry="7"
-        transform="rotate(-5 122 324)"
-        fill="var(--portfolio-art-terracotta)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-      />
-      {/* Notebook, loose pencil, and mug. */}
-      <path
-        d="m382 377 49-6 35 21-50 7-34-22Z"
-        fill="var(--portfolio-art-terracotta)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <path
-        d="m389 375 42-5 27 17-42 6-27-18Z"
-        fill="var(--portfolio-art-screen)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="1.5"
-      />
-      <path
-        d="m400 377 23-3m-16 8 24-3m-33 1-3 6m-7-10-3 6"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-      />
-      <path d="m371 410 40-4" stroke="var(--portfolio-art-terracotta)" strokeWidth="4" strokeLinecap="round" />
-      <path d="M446 325c24-5 29 24 4 27" stroke="var(--portfolio-art-outline)" strokeWidth="5" />
-      <path
-        d="m416 317 34-3-3 41c-7 10-19 11-28 2l-3-40Z"
-        fill="var(--portfolio-art-screen)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <ellipse
-        cx="433"
-        cy="316"
-        rx="17"
-        ry="6"
-        transform="rotate(-5 433 316)"
-        fill="var(--portfolio-art-wood-edge)"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="2"
-      />
-      <path
-        d="M428 299c-9-11 9-12 1-23m12 21c-8-10 8-12 0-23"
-        stroke="var(--portfolio-art-outline)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        opacity=".55"
-      />
-      <path
-        d="M427 171c40 11 57 39 40 72m-3-12 3 13 11-8"
-        stroke="var(--portfolio-warm-accent)"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      >
+        <rect y="4" width="55" height="35" rx="2" fill="var(--portfolio-art-pot-shade)" strokeWidth="1" />
+        <rect y="1" width="55" height="35" rx="2" fill="var(--portfolio-art-terracotta)" strokeWidth="1" />
+        <path d="M5 0h47v31H5Z" fill="var(--portfolio-art-screen)" strokeWidth=".8" />
+        <path d="M12 9h29m-29 6h24m-24 6h27" strokeWidth="1.2" strokeLinecap="round" opacity=".35" />
+        <path d="M9 1v29" stroke="var(--portfolio-art-terracotta)" strokeWidth="1.5" opacity=".5" />
+      </g>
+      <g className="portfolio-workspace-pencil" transform="matrix(1 -.08 .85 .55 369 407)">
+        <path d="M0 0h44" stroke="var(--portfolio-art-pot-shade)" strokeWidth="3" strokeLinecap="round" />
+        <path d="M0 -1h40" stroke="var(--portfolio-art-terracotta)" strokeWidth="3" strokeLinecap="round" />
+        <path d="m40-2 7 2-7 2Z" fill="var(--portfolio-art-wood)" />
+        <path d="m45-.6 2 .6-2 .6Z" fill="var(--portfolio-art-line)" />
+      </g>
+      <g className="portfolio-workspace-mug" stroke="var(--portfolio-art-line)" strokeLinejoin="round">
+        <path d="M447 325c20-5 25 22 0 25" stroke="var(--portfolio-art-device-light)" strokeWidth="7" />
+        <path d="M447 325c20-5 25 22 0 25" strokeWidth="1.2" />
+        <path d="m413 317 37-2-3 37c-1 12-26 14-30 3l-4-38Z" fill={paint('ceramic')} strokeWidth="1.2" />
+        <ellipse
+          cx="432"
+          cy="317"
+          rx="19"
+          ry="6"
+          transform="rotate(-4 432 317)"
+          fill="var(--portfolio-art-screen)"
+          strokeWidth="1.2"
+        />
+        <ellipse
+          cx="432"
+          cy="317"
+          rx="15"
+          ry="3.5"
+          transform="rotate(-4 432 317)"
+          fill="var(--portfolio-art-pot-shade)"
+          stroke="none"
+          opacity=".75"
+        />
+        <path
+          d="m422 327 2 19"
+          stroke="var(--portfolio-art-highlight)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          opacity=".5"
+        />
+        <g className="portfolio-workspace-steam" strokeWidth="1.2" strokeLinecap="round">
+          <WorkspaceRestingSteam>
+            <path d="M426 301c-8-9 7-13 1-22m13 21c-7-10 7-13 1-22" />
+          </WorkspaceRestingSteam>
+          <WorkspaceSteam index={0}>
+            <path d="M426 301c-8-9 7-13 1-22" />
+          </WorkspaceSteam>
+          <WorkspaceSteam index={1}>
+            <path d="M439 300c-7-10 7-13 1-22" />
+          </WorkspaceSteam>
+        </g>
+      </g>
     </svg>
   );
 }

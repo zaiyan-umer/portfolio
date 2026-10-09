@@ -28,9 +28,6 @@
   .portfolio-hero-actions {
     animation-delay: 120ms;
   }
-  .portfolio-hero-art {
-    animation-delay: 100ms;
-  }
   .portfolio-route-enter {
     animation: portfolio-entrance 200ms ease-out;
   }
@@ -57,5 +54,22 @@
   .portfolio-project:hover .portfolio-preview-image,
   .portfolio-case-study:hover > svg {
     transform: none;
+  }
+}
+
+@keyframes portfolio-workspace-arrive {
+  from {
+    transform: translateY(10px) scale(0.985);
+    opacity: 0.6;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-workspace-entrance {
+    animation: portfolio-workspace-arrive 900ms cubic-bezier(0.22, 1, 0.36, 1) 100ms backwards;
   }
 }
