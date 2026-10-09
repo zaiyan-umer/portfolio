@@ -162,6 +162,16 @@
   .portfolio-about-grid-split {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: 64px;
+    align-items: stretch;
+  }
+  .portfolio-about-grid-split .portfolio-about-biography {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .portfolio-about-grid-split .portfolio-about-biography p + p {
+    margin-top: 0;
   }
   .portfolio-about-intro {
     font-size: 25px;
