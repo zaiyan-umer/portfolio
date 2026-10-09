@@ -3,7 +3,7 @@ import { contactLinks, siteContact } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import { ContactForm } from '@/features/contact/components/ContactForm';
 
-export default function ContactSection({ className }: { className?: string }) {
+export default function ContactSection({ className, sectionNumber = '05' }: { className?: string; sectionNumber?: '05' | '06' }) {
   return (
     <section
       id="contact"
@@ -15,7 +15,7 @@ export default function ContactSection({ className }: { className?: string }) {
           <div className="portfolio-section-heading">
             <div>
               <p className="portfolio-eyebrow">
-                <span aria-hidden="true">05 / </span>Contact
+                <span aria-hidden="true">{sectionNumber} / </span>Contact
               </p>
               <h2 id="contact-heading">Let’s talk.</h2>
             </div>

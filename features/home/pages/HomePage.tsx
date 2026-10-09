@@ -7,9 +7,12 @@ import Hero from '@/features/home/sections/Hero';
 import SelectedProjects from '@/features/projects/sections/SelectedProjects';
 import type { ProjectSummary } from '@/features/projects/types';
 import { TechStack } from '@/features/home/sections/TechStack';
+import { Currently } from '@/features/home/sections/Currently';
+import { normalizeCurrently } from '@/features/home/lib/currently';
 
 export default async function HomePage() {
-  const { aboutMeData, experienceData, techStackData, projectsData } = await getHomeData();
+  const { aboutMeData, experienceData, techStackData, projectsData, currentlyData } = await getHomeData();
+  const currently = normalizeCurrently(currentlyData);
 
   return (
     <main className="content relative">
@@ -18,7 +21,8 @@ export default async function HomePage() {
       <AboutMe data={aboutMeData} />
       <Experience data={experienceData} />
       <TechStack data={techStackData} />
-      <ContactSection />
+      <Currently data={currently} />
+      <ContactSection sectionNumber={currently.entries.length ? '06' : '05'} />
       <Footer />
     </main>
   );

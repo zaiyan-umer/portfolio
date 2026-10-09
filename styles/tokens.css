@@ -22,6 +22,12 @@
   --portfolio-art-terracotta: var(--portfolio-warm-accent);
   --portfolio-art-blue: var(--portfolio-accent);
   --portfolio-art-shadow: #ddccb5;
+  --portfolio-art-contact-shadow: #70503a;
+  --portfolio-art-highlight: #fff7e3;
+  --portfolio-art-line: #7f6e5d;
+  --portfolio-art-device-light: #c2b6a7;
+  --portfolio-art-leaf-shade: #557a65;
+  --portfolio-art-pot-shade: #8f4d37;
   --portfolio-header-height: 72px;
 }
 
@@ -45,6 +51,12 @@
   --portfolio-art-wood-edge: #55463d;
   --portfolio-art-green: #8cae9b;
   --portfolio-art-shadow: #191511;
+  --portfolio-art-contact-shadow: #120f0d;
+  --portfolio-art-highlight: #efd7b0;
+  --portfolio-art-line: #96816b;
+  --portfolio-art-device-light: #7c6d5b;
+  --portfolio-art-leaf-shade: #487963;
+  --portfolio-art-pot-shade: #955d43;
 }
 
 :root {

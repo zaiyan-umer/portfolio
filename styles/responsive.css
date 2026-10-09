@@ -153,6 +153,9 @@
   .portfolio-profile-section {
     padding-block: 88px;
   }
+  .portfolio-currently-section {
+    padding-block: 64px;
+  }
   .portfolio-about-grid-split {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: 64px;

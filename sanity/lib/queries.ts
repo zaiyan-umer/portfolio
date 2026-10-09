@@ -60,6 +60,20 @@ export const getAboutMeQuery = groq`
   }
 `
 
+// Get the current notes singleton, retaining legacy fields for read compatibility
+export const getCurrentlyQuery = groq`
+  *[_type == "currently" && _id == "currently"][0] {
+    updatedAt,
+    entries[] {
+      _key,
+      note[] { _key, _type, style, listItem, children[] { _key, _type, text, marks }, markDefs[] { _key, _type, href } },
+      description,
+      title,
+      href
+    }
+  }
+`
+
 // Get experiences
 export const getExperienceQuery = groq`
   *[_type == "experience"] | order(order asc) {

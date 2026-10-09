@@ -1,15 +1,16 @@
 import 'server-only';
 import { sanityFetch } from '@/sanity/lib/live';
-import { featuredProjectsQuery, getAboutMeQuery, getExperienceQuery, getTechStackQuery } from '@/sanity/lib/queries';
+import { featuredProjectsQuery, getAboutMeQuery, getCurrentlyQuery, getExperienceQuery, getTechStackQuery } from '@/sanity/lib/queries';
 
 export async function getHomeData() {
-  const [{ data: aboutMeData }, { data: experienceData }, { data: techStackData }, { data: projectsData }] =
+  const [{ data: aboutMeData }, { data: experienceData }, { data: techStackData }, { data: projectsData }, { data: currentlyData }] =
     await Promise.all([
       sanityFetch({ query: getAboutMeQuery }),
       sanityFetch({ query: getExperienceQuery }),
       sanityFetch({ query: getTechStackQuery }),
       sanityFetch({ query: featuredProjectsQuery }),
+      sanityFetch({ query: getCurrentlyQuery }),
     ]);
 
-  return { aboutMeData, experienceData, techStackData, projectsData };
+  return { aboutMeData, experienceData, techStackData, projectsData, currentlyData };
 }
