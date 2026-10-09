@@ -17,6 +17,7 @@ export function createMessage({ name, email, message }: FormValues) {
     name,
     email,
     message,
-    createdAt: new Date().toISOString(),
+    submittedAt: new Date().toISOString(),
+    read: false,
   });
 }

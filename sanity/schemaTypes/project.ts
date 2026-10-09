@@ -11,11 +11,6 @@ export default defineType({
       description: 'Aim for 150–300 words across these optional sections. Use plain text and blank lines between paragraphs; Markdown is not rendered.',
       options: { collapsible: true, collapsed: false },
     },
-    {
-      name: 'legacy',
-      title: 'Legacy content',
-      options: { collapsible: true, collapsed: true },
-    },
   ],
   fields: [
     defineField({
@@ -98,62 +93,6 @@ export default defineType({
       rows: 5,
       fieldset: 'story',
       description: 'Explain one meaningful decision, challenge, tradeoff, or lesson. You can also describe what works today and what you would improve.',
-    }),
-    defineField({
-      name: 'content',
-      title: 'Legacy README content',
-      description: 'Preserved for reference and editing. This content is no longer displayed on public project pages; use the Project story fields instead.',
-      fieldset: 'legacy',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'Quote', value: 'blockquote' },
-          ],
-          marks: {
-            decorators: [
-              { title: 'Strong', value: 'strong' },
-              { title: 'Emphasis', value: 'em' },
-              { title: 'Code', value: 'code' },
-            ],
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'URL',
-                  },
-                ],
-              },
-            ],
-          },
-        },
-        {
-          type: 'image',
-          options: { hotspot: true },
-        },
-        {
-          type: 'code',
-          options: {
-            language: 'typescript',
-            languageAlternatives: [
-              { title: 'TypeScript', value: 'typescript' },
-              { title: 'JavaScript', value: 'javascript' },
-              { title: 'HTML', value: 'html' },
-              { title: 'CSS', value: 'css' },
-              { title: 'Python', value: 'python' },
-            ],
-          },
-        },
-      ],
     }),
     defineField({
       name: 'publishedAt',
