@@ -19,7 +19,8 @@ function IconVariant({ src, name, className }: { src: string; name: string; clas
 }
 
 export function TechnologyIcon({ iconKey, name, themed }: { iconKey: string; name: string; themed: boolean }) {
-  const base = `https://ik.imagekit.io/mllj8vxiah/${encodeURIComponent(iconKey)}`;
+  const encodedKey = encodeURIComponent(iconKey).replace(/%2B/gi, '+');
+  const base = `https://ik.imagekit.io/mllj8vxiah/${encodedKey}`;
 
   return (
     <span className="portfolio-tech-icon" aria-hidden="true">
