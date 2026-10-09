@@ -41,3 +41,19 @@ export function normalizeExperience(data: (ExperienceData | null)[] | null) {
       })
     : [];
 }
+
+export function groupExperience(entries: ReturnType<typeof normalizeExperience>) {
+  const groups: { company: string; roles: typeof entries }[] = [];
+  const companyKey = (company: string) => company.trim().replace(/\s+/g, ' ').toLowerCase();
+
+  for (const entry of entries) {
+    const previous = groups.at(-1);
+    if (entry.company && previous && companyKey(previous.company) === companyKey(entry.company)) {
+      previous.roles.push(entry);
+    } else {
+      groups.push({ company: entry.company, roles: [entry] });
+    }
+  }
+
+  return groups;
+}

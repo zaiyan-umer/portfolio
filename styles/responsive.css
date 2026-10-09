@@ -182,13 +182,19 @@
   .portfolio-experience-list::before {
     left: calc(10rem + 23px);
   }
+  .portfolio-experience-company {
+    padding-left: calc(10rem + 48px);
+  }
+  .portfolio-experience-group + .portfolio-experience-group {
+    margin-top: 48px;
+  }
   .portfolio-experience-entry {
     grid-template-columns: 10rem minmax(0, 1fr);
     gap: 48px;
     padding-left: 0;
   }
   .portfolio-experience-entry + .portfolio-experience-entry {
-    margin-top: 48px;
+    margin-top: 32px;
   }
   .portfolio-experience-entry::before {
     left: calc(10rem + 18px);
