@@ -1,5 +1,11 @@
 import { groq } from 'next-sanity'
 
+// Sitemap discovery is intentionally limited to published featured projects.
+export const projectSitemapQuery = groq`
+  *[_type == "project" && featured == true && !(_id in path("drafts.**"))]
+    | order(order asc, publishedAt desc) { slug, _updatedAt }
+`
+
 // Get all projects
 export const projectsQuery = groq`
   *[_type == "project"] | order(order asc, publishedAt desc) {
