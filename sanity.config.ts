@@ -20,10 +20,10 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema: {
     ...schema,
-    templates: (templates) => templates.filter((template) => template.schemaType !== 'currently'),
+    templates: (templates) => templates.filter((template) => !['currently', 'message'].includes(template.schemaType)),
   },
   document: {
-    actions: (actions, context) => context.schemaType === 'currently'
+    actions: (actions, context) => ['currently', 'message'].includes(context.schemaType)
       ? actions.filter((action) => action.action !== 'duplicate')
       : actions,
   },

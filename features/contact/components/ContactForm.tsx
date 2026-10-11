@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useContactForm } from '@/features/contact/hooks/useContactForm';
+import { contactLimits } from '@/features/contact/lib/limits';
 
 export function ContactForm() {
   const { values, errors, status, formRef, pending, update, handleSubmit } = useContactForm();
@@ -21,6 +22,7 @@ export function ContactForm() {
               id="contact-name"
               name="name"
               autoComplete="name"
+              maxLength={contactLimits.name}
               required
               value={values.name}
               disabled={pending}
@@ -44,6 +46,7 @@ export function ContactForm() {
               name="email"
               type="email"
               autoComplete="email"
+              maxLength={contactLimits.email}
               required
               value={values.email}
               disabled={pending}
@@ -67,6 +70,7 @@ export function ContactForm() {
               name="message"
               required
               rows={5}
+              maxLength={contactLimits.message}
               value={values.message}
               disabled={pending}
               onChange={(event) => update('message', event.target.value)}
