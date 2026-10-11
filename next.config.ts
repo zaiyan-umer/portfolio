@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
     ],
   },
   cacheComponents: true,
+  // Preserve the existing prefetch behavior during the Next 16 upgrade.
+  partialPrefetching: false,
+  // This repository maintains its own AGENTS.md.
+  agentRules: false,
   turbopack: {
     root: __dirname,
   },

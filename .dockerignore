@@ -1,6 +1,9 @@
 node_modules
 .next
 .git
+.agents
+.aws
+.codex
 .gitignore
 .env*
 README.md
