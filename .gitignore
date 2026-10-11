@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# Markdown documentation stays local except README files
+*.md
+!README.md
+
 # debug
 npm-debug.log*
 yarn-debug.log*
