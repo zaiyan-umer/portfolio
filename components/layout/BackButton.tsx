@@ -1,14 +1,15 @@
 'use client'
 
 import { ArrowLeft } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter, useSelectedLayoutSegment } from "next/navigation"
 import { cn } from "@/lib/utils"
 
 const BackButton = ({ className }: { className?: string }) => {
-    const pathname = usePathname()
+    const segment = useSelectedLayoutSegment()
     const router = useRouter()
 
-    if (pathname === "/") return null
+    // The route tree stays consistent when SSR uses the homepage's internal /index path.
+    if (segment === null) return null
 
     const handleBack = () => {
         if (window.history.length > 1) {
